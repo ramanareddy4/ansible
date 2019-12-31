@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  tasks:
+    - name: create a file
+      command: touch /opt/cloudhost/new.txt
+      become: yes
+      become_user: root

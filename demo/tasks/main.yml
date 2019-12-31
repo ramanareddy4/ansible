@@ -1,0 +1,12 @@
+---
+# tasks file for demo
+- block:
+  - name: copying files
+    copy:
+      src: demo.txt
+      dest: /opt/cloudhost
+      owner: root
+      group: root
+      mode: 0777
+    become: yes
+    become_user: root
