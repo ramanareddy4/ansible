@@ -1,4 +1,0 @@
----
-source_path: test1.txt
-dest_path: /home/ec2-user
-# vars file for demo

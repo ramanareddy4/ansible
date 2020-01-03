@@ -1,9 +1,0 @@
----
-- hosts: dev
-  become: yes
-  tasks:
-    - name: Transfer file from ServerA to ServerB
-      synchronize:
-        src: /home/reramana/test.txt
-        dest: /opt/mount2/
-      delegate_to: hc4t05929.itcs.hpecorp.net

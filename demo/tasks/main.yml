@@ -4,9 +4,10 @@
   - name: copying files
     copy:
       src: demo.txt
-      dest: /opt/cloudhost
+      dest: /home/ec2-user
       owner: root
       group: root
       mode: 0777
     become: yes
     become_user: root
+

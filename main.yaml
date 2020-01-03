@@ -1,5 +1,4 @@
 ---
-- hosts: dev
-  gather_facts: no
+- hosts: devops
   roles:
-    - { role: test, become: yes }
+    - demo

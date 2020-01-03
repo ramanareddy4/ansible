@@ -1,8 +1,2 @@
 ---
-- name: Transfer and execute a script.
-  hosts: dev
-  tasks:
-    - name: Remove a file, if present
-      command: docker restart "{{service}}"
-      become: yes
-      become_user: root
+# tasks file for test

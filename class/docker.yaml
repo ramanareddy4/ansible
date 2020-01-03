@@ -1,7 +1,0 @@
----
-- hosts: dev
-  tasks: 
-    - name: restarting container
-      command: docker restart hubot_redis_1
-      become: yes
-      become_user: root
