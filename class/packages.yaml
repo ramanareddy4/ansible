@@ -1,0 +1,16 @@
+---
+- hosts: devops
+  become: yes
+  become_user: root
+- block
+  tasks:
+     - name: install packages
+       yum:
+         name: "{{ item }}" 
+         state: latest
+       with_items:
+          - httpd
+          - git
+       tags:
+          - packages
+ 

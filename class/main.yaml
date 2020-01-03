@@ -1,0 +1,4 @@
+---
+- hosts: devops
+  roles:
+    - demo

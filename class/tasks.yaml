@@ -1,0 +1,22 @@
+---
+- hosts: devops
+  become: yes
+  become_user: root 
+  vars:
+   http_port: 90
+ 
+  tasks:
+  - name: install apache server
+    yum: 
+      name: httpd 
+      state: latest
+
+  - name: write the apache config file
+    copy:
+      src: index.html
+      dest: /var/www/html
+
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted

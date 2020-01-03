@@ -1,0 +1,28 @@
+version: "3"
+services:
+  addison-application:
+# replace username/repo:tag with your name and image details
+    image: hub.docker.hpecorp.net/global-it-entmon/entmon-notification-config-service:dev_engg-063667530b049054aecbf7b3726593d6f90ecf14
+    deploy:
+       mode: replicated
+       replicas: 2
+       restart_policy:
+         condition: on-failure
+	    delay: 3s
+            max_attempts: 2
+            window: 60s
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 258M
+    ports:
+      - "8095:8095"
+	environment:
+     - NODE_ENV=$ENV
+    networks:
+      - webnet
+	
+  
+networks:
+  webnet:
+  

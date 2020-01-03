@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  tasks:
+   - name: Get ssh pub key files
+     fetch:
+        src: "/home/reramana/.ssh/id_rsa.pub"
+        dest: "/var/tmp/reramana_id_rsa.pub"
+        flat: yes
+     when: hc4t05929.itcs.hpecorp.net
+ 
+   - name: "Push public key file"
+     copy:
+       src: "/var/tmp/reramana_id_rsa.pub"
+       dest: "/var/tmp/reramana_id_rsa.pub"
+     with_items: hc4t05929.itcs.hpecorp.net
+
+   - name: "Insert public key in authorized_keys"
+     authorized_key:
+       user: reramana
+       key: "{{ lookup('file', '/var/tmp/reramana_id_rsa.pub') }}"
+     with_items: hc4t05929.itcs.hpecorp.net
+     become: true
+     become_user: root
+     when: hc4t05928.itcs.hpecorp.net

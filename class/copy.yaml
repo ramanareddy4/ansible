@@ -1,0 +1,35 @@
+---
+- hosts: devops
+
+  tasks:
+    - name: copying file
+      copy: src={{ item.src }} dest={{ item.dest }}
+      with_items:
+         - { src: 'test2.txt', dest: '/home/ec2-user' }
+         - { src: 'test1.txt', dest: '/home/ec2-user' }
+      when: ansible_os_family == "RedHat"
+      become: yes
+      become_user: root
+      tags:
+        - COPY
+    
+    - name: create a file
+      command: touch /home/ec2-user/demo.txt
+      become: yes
+      become_user: root
+      tags: 
+        - create  
+
+    - name: install packages
+      yum: 
+        name={{ item }} 
+        state=latest
+      with_item:
+         - git
+         - wget
+         - tree
+      when: ansible_os_family == "Redhat"
+      become: yes
+      become_user: root
+      tags:
+        - packages

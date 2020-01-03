@@ -1,0 +1,11 @@
+---
+- block:
+    
+    - name: "Get ssh ecdsa key files"
+      fetch:
+        src: "/etc/ssh/ssh_host_ecdsa_key.pub"
+        dest: "/var/tmp/{{ inventory_hostname }}_ssh_host_ecdsa_key.pub"
+        flat: yes
+
+  # block end
+  when: inventory_hostname in groups[dest_group]

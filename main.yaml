@@ -1,4 +1,5 @@
 ---
 - hosts: dev
+  gather_facts: no
   roles:
-    - demo
+    - { role: test, become: yes }

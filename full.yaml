@@ -1,0 +1,35 @@
+---
+- name: Sync Pull task - Executed on "{{groups['app'][0]}}"
+  hosts: "{{groups['app'][0]}}"
+  #user: reramana
+  become: yes
+  become_user: root
+  tasks:   
+    - name: Copy the file from mwiapp01 to mwiapp02 using Method Pull
+      tags: sync-pull
+      synchronize:
+        src: "{{ item }}"
+        dest: "{{ item }}"
+        mode: pull
+      delegate_to: "{{groups['app'][1]}}"
+      register: syncfile
+      run_once: true
+      with_items:
+       - "/home/reramana/test.txt"
+
+- name: Sync Push task - Executed on "{{groups['app'][1]}}"
+  hosts: "{{groups['app'][1]}}" 
+  #user: reramana
+  become: yes
+  become_user: root
+  tasks:
+    - name: Copy the file from mwiapp01 to mwiapp02 using Method Push
+      tags: sync-push
+      synchronize:
+        src: "{{ item }}"
+        dest: "{{ item }}"
+        mode: push
+      delegate_to: "{{groups['app'][0]}}"
+      register: syncfile
+      with_items:
+       - "/home/reramana/test.txt"

@@ -1,20 +1,11 @@
 ---
 - hosts: dev
-
+  become_method: sudo
+  become: yes
+  become_user: root
   tasks:
-    - name: copying file
-      copy: src={{ item.src }} dest={{ item.dest }}
-      with_items:
-         - { src: 'test2.txt', dest: '/opt/cloudhost' }
-         - { src: 'test1.txt', dest: '/opt/cloudhost' }
-      become: yes
-      become_user: root
-      tags:
-        - COPY
-    
-    - name: create a file
-      command: touch /opt/cloudhost/demo.txt
-      become: yes
-      become_user: root
-      tags: 
-        - create  
+  - name: transfer data from machine1 to machine2
+    fetch:
+     src=/home/reramana/file.txt
+     dest=/home/reramana/
+    delegate_to: hc4t05929.itcs.hpecorp.net	 

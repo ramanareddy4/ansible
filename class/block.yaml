@@ -1,0 +1,16 @@
+---
+- hosts: devops
+  become: yes
+  become_user: root
+  tasks:
+   - name: Install, configure, and start Apache
+     block:
+       - name: install httpd and memcached
+         yum:
+           name:
+           - tree
+           - wget
+           state: present 
+     always:
+       - debug:
+           msg: "This always executes"

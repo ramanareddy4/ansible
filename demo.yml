@@ -1,0 +1,12 @@
+- hosts: dev
+  tasks:
+    - fetch:
+        src: /opt/mount2/test.txt
+        dest: /home/reramana/
+        flat: true
+
+- hosts: all:!ubuntu1
+  tasks:
+    - copy:
+        src: /home/reramana/test.txt
+        dest: /opt/mount2/	
