@@ -1,0 +1,19 @@
+docker build -t name Dockerfilepath   --> bbuilding docker images
+
+docker run -ti -d -p 80:80 --name containername imagesname   --> creating docker container
+
+docker ps -->running containers
+
+docker ps -a --> display stopped contianrs
+
+docker stop containername  --> stoping containers
+
+docker start containername  --> starting containers
+
+docker restart containername  --> restarting containers
+
+docker tag nginx:latest ramanareddy4k/devops:nginx  --> tagging the docker images
+
+docker rm containername --> removing containername
+
+docker rmi imagesname --> removing images 
