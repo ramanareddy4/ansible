@@ -23,6 +23,8 @@ docker rmi imagesname --> removing images
 docker swam
 ==============
 
+follow the article to install docker-compose https://linuxize.com/post/how-to-install-and-use-docker-compose-on-centos-7/
+
 docker swarm init
 
 docker swarm join <token>
