@@ -17,3 +17,22 @@ docker tag nginx:latest ramanareddy4k/devops:nginx  --> tagging the docker image
 docker rm containername --> removing containername
 
 docker rmi imagesname --> removing images 
+
+
+===================
+docker swam
+==============
+
+docker swarm init
+
+docker swarm join <token>
+
+create the file: docker-compose.yml
+
+docker stack deploy -c docker-compose.yml nginx
+
+===============
+docker compose
+=============
+
+docker-compose up
