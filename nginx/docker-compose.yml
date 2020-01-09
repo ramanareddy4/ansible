@@ -1,0 +1,25 @@
+version: "3"
+services:
+  addison-application:
+      image: "nginx:latest"
+      deploy:
+        replicas: 5
+        restart_policy:
+          condition: on-failure
+          delay: 3s
+          max_attempts: 2
+          window: 60s
+      update_config:
+        parallelism: 2
+        delay: 10s
+      ports:
+        - "80:80"
+      environment:
+        - NODE_ENV=$ENV                                                                                      
+      networks:
+        - webnet
+      labels:
+        - "Version=latest"
+
+networks:
+  webnet:
