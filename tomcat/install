@@ -8,3 +8,34 @@ cd /opt/apache/apache-tomcat-9.0.30/
 pwd
 echo "export CATALINA_HOME="/opt/apache/apache-tomcat-9.0.30"" >> ~/.bashrc
 cat ~/.bashrc
+
+
+deploying new application
+=======================
+using below command to create the web application.
+mvn archetype:generate -DgroupId=com.devops -DartifactId=helloworld-webapp -DarchetypeArtifactId=maven-archetype-webapp
+
+build:
+------------
+mvn clean install
+
+copying code files to deployment location: tomcat/webapps/
+------------------------------
+helloworld-webapp.war
+helloworld-webapp
+
+stop and start the tomcat.
+
+note: user tomcat 7
+
+
+
+
+
+
+
+
+
+
+
+
